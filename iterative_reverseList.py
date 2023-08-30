@@ -18,9 +18,26 @@ def reverseList(head: ListNode) -> ListNode:
     ans.val = node.val
     return ans
 
+def recursiveReverse(head):
+    if not head:
+        return head
+    if not head.next:
+        return head
+    
+    newHead = recursiveReverse(head.next)
+    print(newHead.val)
+    print(newHead.next)
+    print(head.val)
+    print(head.next)
+    print(head.next.next)
+    head.next.next = head
+    head.next = None
+        
+    return newHead
+
 if __name__ == '__main__':
     test = ListNode(0,ListNode(1,ListNode(2,ListNode(3))))
-    ans = reverseList(test)
+    ans = recursiveReverse(test)
     
     i = ans
     while (i.next != None):
